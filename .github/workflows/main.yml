@@ -1,8 +1,7 @@
 name: Access Issue Information
 
 on:
-  issues:
-    types: [opened, reopened]
+  issues
 
 jobs:
   access_issue_info:
@@ -25,9 +24,3 @@ jobs:
           echo "Issue Body: ${ISSUE_BODY}"
           echo "Issue Assignees: ${ISSUE_ASSIGNEES}"
           echo "Issue Labels: ${ISSUE_LABELS}"
-
-      - name: Get Issue From GitHub API
-        run: |
-          ISSUE_NUMBER=${{ github.event.issue.number }}
-          ISSUE_RESPONSE=$(curl -s https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
-          echo "Issue Information: $ISSUE_RESPONSE"
